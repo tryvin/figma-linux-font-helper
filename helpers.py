@@ -1,7 +1,7 @@
 # Figma Font Helper
 # Maintainer Vin <github.com/tryvin>
-# Helper functions
-# BSD license
+# Copyright 2019 Vin
+# MIT License
 
 import re
 import subprocess
