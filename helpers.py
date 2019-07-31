@@ -59,7 +59,7 @@ def get_font_list():
         # Only allows TTF or TTC files, we look at the extension
         # But we could extend this to look for the mime type
 
-        if font_file.endswith(".ttf") or font_file.endswith(".ttc"):
+        if font_file.endswith(".ttf") or font_file.endswith(".ttc") or font_file.endswith(".otf"):
             if font_file not in font_list:
                 font_info = font_info.strip()
                 font_extra_info = ""
