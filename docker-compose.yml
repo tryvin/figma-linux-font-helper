@@ -3,7 +3,7 @@ services:
   server:
     build: .
     volumes:
-      - /usr/share/fonts:/usr/share/fonts
+      - ~/Library/Fonts/:/usr/share/fonts
     ports:
       - "18412:18412"
       - "7335:7335"

@@ -27,7 +27,11 @@ def is_valid_origin(origin):
 def get_font_list():
     font_list = {}
 
-    font_shell_command = "fc-list --format '%{file} | %{family} | %{weight} | %{style} | %{postscriptname}\n' | sort | grep -e '\.ttf\|\.ttc\|\.otf'"
+    allowed_extensions = ('\\.ttf', '\\.ttc', '\\.otf')
+
+    font_shell_command = "fc-list --format '%%{file} | %%{family} | %%{weight} | %%{style} | %%{postscriptname}\\n' | sort | grep -e '%s'" % (
+        "\\|".join(allowed_extensions),
+    )
 
     for font_line in subprocess.getoutput(font_shell_command).split("\n"):
         details = font_line.split(" | ")

@@ -5,6 +5,7 @@
 
 import io
 import os
+import sys
 from flask import Flask, jsonify, send_file, request, make_response
 
 from helpers import get_font_list, is_valid_origin
@@ -106,4 +107,12 @@ def need_update():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=HTTP_PORT)
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "docker-mode":
+            hostname = "0.0.0.0"
+        else:
+            hostname = sys.argv[1]
+    else:
+        hostname = "127.0.0.1"
+
+    app.run(host=hostname, port=HTTP_PORT)

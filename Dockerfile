@@ -6,4 +6,7 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "server.py"]
+EXPOSE 18412
+EXPOSE 7335
+
+CMD ["python", "server.py", "0.0.0.0"]
