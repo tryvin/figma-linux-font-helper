@@ -30,7 +30,7 @@ Rename `.env.example` to `.env` to define a custom value to `FONTS_FOLDER` befor
 
 Big Thanks to the following contributors for improving this project! (NOT sorted by order of importance)
 
-* arpanetus
-* aanpilov
-* marcosfreitas
+* [arpanetus](https://github.com/arpanetus)
+* [aanpilov](https://github.com/aanpilov)
+* [marcosfreitas](https://github.com/marcosfreitas)
 * Wayne Steidley
