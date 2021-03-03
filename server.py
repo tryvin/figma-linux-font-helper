@@ -7,11 +7,12 @@ import io
 import os
 import sys
 from flask import Flask, jsonify, send_file, request, make_response
-
+from flask_cors import CORS
 from helpers import get_font_list, is_valid_origin
 
 
 app = Flask(__name__)
+CORS(app)
 
 HTTP_PORT = 18412
 HTTPS_PORT = 7335
@@ -113,6 +114,6 @@ if __name__ == '__main__':
         else:
             hostname = sys.argv[1]
     else:
-        hostname = "127.0.0.1"
+        hostname = "0.0.0.0"
 
     app.run(host=hostname, port=HTTP_PORT)
