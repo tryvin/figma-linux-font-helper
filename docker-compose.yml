@@ -4,6 +4,9 @@ services:
     build: .
     volumes:
       - ${FONT_FOLDER:-/usr/share/fonts}:/usr/share/fonts
+      # Uncomment the lines bellow and adjust them to your need if you need more fonts paths
+      # - /home/youruser/anotherfontfolder:/usr/share/fonts/anotherfontfolder
+      # - /tmp/yetanotherfontfolder:/usr/share/fonts/yetanotherfontfolder
     ports:
       - "18412:18412"
       - "7335:7335"
