@@ -34,3 +34,4 @@ Big Thanks to the following contributors for improving this project! (NOT sorted
 * [aanpilov](https://github.com/aanpilov)
 * [marcosfreitas](https://github.com/marcosfreitas)
 * Wayne Steidley
+* [misotrnka](https://github.com/misotrnka)

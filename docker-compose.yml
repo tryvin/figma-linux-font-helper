@@ -7,3 +7,4 @@ services:
     ports:
       - "18412:18412"
       - "7335:7335"
+      - "44950:18412" # New versions of Figma also look for this 44950 port

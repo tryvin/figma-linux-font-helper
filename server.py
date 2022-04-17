@@ -6,21 +6,24 @@
 import io
 import os
 import sys
-from flask import Flask, jsonify, send_file, request, make_response
+
+from flask import Flask, jsonify, make_response, request, send_file
+from flask_cors import CORS
 
 from helpers import get_font_list, is_valid_origin
 
-
 app = Flask(__name__)
+CORS(app, resources={r"/figma/*": {"origins": "*"}})
 
 HTTP_PORT = 18412
 HTTPS_PORT = 7335
 PROTOCOL_VERSION = 17
 FONT_FILES = get_font_list()
 
-
-def answers_with_404():
-    return ('', 404)
+# Figma now returns a 403 by default
+@app.errorhandler(404)
+def answers_with_403(e = None):
+    return ('Unauthorized', 403)
 
 
 @app.route("/figma/version")
@@ -30,16 +33,11 @@ def version():
             "version": PROTOCOL_VERSION
         }))
 
-        if request.referrer:
-            response.headers['Access-Control-Allow-Origin'] = \
-                request.referrer[:-1] if request.referrer.endswith("/") else \
-                request.referrer[:-1]
-
         response.headers['Content-Type'] = 'application/json'
 
         return response
     else:
-        return answers_with_404()
+        return answers_with_403()
 
 
 @app.route("/figma/font-files")
@@ -50,16 +48,11 @@ def font_files():
             "fontFiles": FONT_FILES
         }))
 
-        if request.referrer:
-            response.headers['Access-Control-Allow-Origin'] = \
-                request.referrer[:-1] if request.referrer.endswith("/") else \
-                request.referrer[:-1]
-
         response.headers['Content-Type'] = 'application/json'
 
         return response
     else:
-        return answers_with_404()
+        return answers_with_403()
 
 
 @app.route("/figma/font-file")
@@ -75,11 +68,6 @@ def font_file():
                     mimetype='application/octet-stream'
                 ))
 
-                if request.referrer:
-                    response.headers['Access-Control-Allow-Origin'] = \
-                        request.referrer[:-1] if request.referrer.endswith("/") else \
-                        request.referrer[:-1]
-
                 response.headers['Content-Type'] = 'application/json'
 
                 return response
@@ -94,16 +82,11 @@ def need_update():
             "version": PROTOCOL_VERSION
         }))
 
-        if request.referrer:
-            response.headers['Access-Control-Allow-Origin'] = \
-                request.referrer[:-1] if request.referrer.endswith("/") else \
-                request.referrer[:-1]
-
         response.headers['Content-Type'] = 'application/json'
 
         return response
     else:
-        return answers_with_404()
+        return answers_with_403()
 
 
 if __name__ == '__main__':
