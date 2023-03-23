@@ -32,7 +32,7 @@ def __split_if_comma__(value):
 def get_font_list():
     font_list = {}
 
-    allowed_extensions = ('\\.ttf', '\\.TTF','\\.ttc', '\\.otf')
+    allowed_extensions = ('\\.ttf', '\\.TTF', '\\.ttc', '\\.otf')
 
     font_shell_command = ["fc-list --format '%%{file} | %%{family} | %%{weight} | %%{style} | %%{postscriptname}\\n' | sort | grep -e '%s'" % (
         "\\|".join(allowed_extensions),
