@@ -34,7 +34,7 @@ def get_font_list():
 
     allowed_extensions = ('\\.ttf', '\\.ttc', '\\.otf')
 
-    font_shell_command = ["fc-list --format '%%{file} | %%{family} | %%{weight} | %%{style} | %%{postscriptname}\\n' | sort | grep -e '%s'" % (
+    font_shell_command = ["fc-list --format '%%{file} | %%{family} | %%{weight} | %%{style} | %%{postscriptname}\\n' | sort | grep -i -e '%s'" % (
         "\\|".join(allowed_extensions),
     )]
 
