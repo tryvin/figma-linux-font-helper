@@ -64,7 +64,7 @@ def font_file():
             with open(file_name, 'rb') as bites:
                 response = make_response(send_file(
                     io.BytesIO(bites.read()),
-                    attachment_filename=os.path.basename(file_name),
+                    download_name=os.path.basename(file_name),
                     mimetype='application/octet-stream'
                 ))
 
